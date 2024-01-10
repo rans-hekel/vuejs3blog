@@ -1,32 +1,49 @@
 <template>
   <div class="home">
-    <input type="text" v-model="search">
-     <div v-for="(name, index) in resultSearch" key="index">
-      <p>Hello {{ name }}</p>
-    </div>
+    <h1>Home</h1>
+    <PostList v-if="showPosts" :posts="posts"  />
+    <button @click="showPosts = !showPosts">UnMounted</button>
+    <button @click="posts.pop()">DeletePost</button>
   </div>
 </template>
 
 <script>
-import { computed, ref } from 'vue';
-
+import { ref } from 'vue';
+import PostList from '../components/PostList.vue';
 
 export default {
-  name: 'HomeView',
-  setup() {
-    const search = ref('')
-    const names = ref(['John', 'Jane', 'Joe', 'Jill', 'Jack', 'Judy', 'Jude', 'Jenna', 'Jenifer', 'Jen', 'Jenin']) ;
-    const resultSearch = computed(() => {
-      return names.value.filter(name => name.toLowerCase().includes(search.value.toLowerCase()))
-    })
+    name: 'HomeView',
+    components: {
+        PostList
+    },
+    setup() {
+        const posts = ref([
+            {
+                id: 1,
+                title: 'My journey with Vue',
+                body: 'Vue is a great framework to learn'
+            },
+            {
+                id: 2,
+                title: 'My journey with React',
+                body: 'React is a great framework to learn'
+            },
+            {
+                id: 3,
+                title: 'My journey with Angular',
+                body: 'Angular is a great framework to learn'
+            }
+        ]);
 
-    return {
-      names,
-      search,
-      resultSearch
-    }
+        const showPosts = ref(true);
 
-  }
+
+        return {
+            posts,
+            showPosts
+        };
+    },
+    components: { PostList }
 }
 </script>
 
