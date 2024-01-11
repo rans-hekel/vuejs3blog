@@ -1,21 +1,22 @@
 {
-    "posts": [
+        "posts": [
+            {
+            "id": "1",
+            "title": "First Article",
+            "body": "This is my first article",
+            "tags": ["web", "vue", "js"]
+        },
         {
-        "id": 1,
-        "title": "First Article",
-        "body": "This is my first article",
-        "tags": ["web", "vue", "js"]
-    },
-    {
-        "id": 2,
-        "title": "Second Article",
-        "body": "This is my second article",
-        "tags": ["js", "html", "node"]
-    },
-    {
-        "id": 3,
-        "title": "Third Article",
-        "body": "This is my third article",
-        "tags": ["web", "js", "node"]
-    }
-]}
+            "id": "2",
+            "title": "Second Article",
+            "body": "This is my second article",
+            "tags": ["js", "html", "node"]
+        },
+        {
+            "id": "3",
+            "title": "Third Article",
+            "body": "This is my third article",
+            "tags": ["web", "js", "node"]
+        }
+    ]
+}

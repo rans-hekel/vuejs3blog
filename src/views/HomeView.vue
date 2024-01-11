@@ -2,15 +2,21 @@
   <div class="home">
     <h1>Home</h1>
     <div v-if="error">{{ error }}</div>
-    <PostList :posts="posts"  />
-    <button @click="posts.pop()">DeletePost</button>
+    <div v-if="posts.length">
+      <PostList :posts="posts"  />
+      <button @click="posts.pop()">DeletePost</button>
+    </div>
+    <div v-else>
+      <Loading />
+    </div>
   </div>
 </template>
 
 <script>
 
 import PostList from '../components/PostList.vue';
-import GetPosts from '../composables/GetPosts.js';
+import GetPosts from '../composable/GetPosts.js';
+import Loading from '@/components/Loading.vue';
 export default {
     name: 'HomeView',
     components: {
@@ -26,7 +32,7 @@ export default {
             error
         };
     },
-    components: { PostList }
+    components: { PostList, Loading }
 }
 </script>
 

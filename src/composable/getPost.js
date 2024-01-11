@@ -1,22 +1,22 @@
 import { ref } from "vue";
 
-const getPosts = () => {
-  const posts = ref([]);
+const getPost = (id) => {
+  const post = ref(null);
   const error = ref(null);
 
   const load = async () => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      const response = await fetch("http://localhost:3000/posts");
+      let response = await fetch(`http://localhost:3000/posts/${id}`);
       if (!response.ok) {
-        throw Error("data Tidak Ada");
+        throw Error("Not Found");
       }
-      posts.value = await response.json();
+      post.value = await response.json();
     } catch (err) {
       error.value = err.message;
     }
   };
-  return { posts, error, load };
+  return { post, error, load };
 };
 
-export default getPosts;
+export default getPost;
