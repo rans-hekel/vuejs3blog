@@ -3,7 +3,7 @@
     <div v-if="post">
         <h3>{{ post.title }}</h3>
         <p>{{ post.body }}</p>
-        <p>Tags : <span v-for="tag in post.tags" :key="tag">#{{ tag }} </span> </p>
+        <p>Tags : <span v-for="tag in post.tags" :key="tag">#{{ tag }}{{ ' ' }} </span> </p>
     </div>
     <div v-else>
         <Loading />
