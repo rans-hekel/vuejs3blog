@@ -4,7 +4,7 @@
         <h2 class="post-title">{{ post.title }}</h2>
             <h3 class="post-subtitle">{{ snippet }}</h3>
         </router-link>
-        <span class="post-meta" v-for="tag in post.tags" :key="tag">#{{ tag }}{{ ' ' }}  </span>
+        <span class="post-meta" v-for="tag in post.tags" :key="tag"><router-link :to="{ name: 'showTag', params: { tag: tag } }" >#{{ tag }}{{ ' ' }}  </router-link>  </span>
 </template>
 
 <script>

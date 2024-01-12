@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import showPost from "../views/posts/showPost.vue";
 import CreatePost from "../views/posts/CreatePost.vue";
+import Tag from "../views/posts/Tag.vue";
 
 const routes = [
   {
@@ -19,6 +20,11 @@ const routes = [
     name: "showPost",
     component: showPost,
     props: true,
+  },
+  {
+    path: "/tag/:tag",
+    name: "showTag",
+    component: Tag,
   },
 ];
 
