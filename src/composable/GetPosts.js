@@ -1,17 +1,15 @@
 import { ref } from "vue";
-
+import { db } from "../firebase/config";
 const getPosts = () => {
   const posts = ref([]);
   const error = ref(null);
 
   const load = async () => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      const response = await fetch("http://localhost:3000/posts");
-      if (!response.ok) {
-        throw Error("data Tidak Ada");
-      }
-      posts.value = await response.json();
+      const res = await db.collection("posts").get();
+      posts.value = res.docs.map((doc) => {
+        return { ...doc.data(), id: doc.id };
+      });
     } catch (err) {
       error.value = err.message;
     }

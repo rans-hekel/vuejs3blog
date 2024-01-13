@@ -53,6 +53,7 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import gambarbuat from '@/assets/img/contact-bg.jpg';
+import { db } from '@/firebase/config';
 
 export default {
     setup(){
@@ -68,11 +69,11 @@ export default {
                 body: body.value,
                 tags: tags.value
             }
-            await fetch('http://localhost:3000/posts', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json'},
-                body: JSON.stringify(post)
-            })
+            const res = await db.collection('posts').add(post);
+
+
+
+
             router.push({ name: 'home' })
         }
         const handleKeydown = () => {
